@@ -35,6 +35,9 @@ return {
 
 			-- toml
 			'taplo',
+
+			-- c
+			'clang-format',
 		}
 		require('mason').setup({
 			ui = {

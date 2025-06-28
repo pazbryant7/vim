@@ -39,11 +39,11 @@ opt.signcolumn = 'yes:1'
 opt.colorcolumn = '80'
 opt.isfname:append('@-@')
 
-opt.updatetime = 50
-
 -- update statusline
 opt.laststatus = 0
 -- opt.statusline = ' %f%m%r%h%w'
+
+opt.updatetime = 50
 
 opt.termguicolors = true
 
@@ -57,6 +57,9 @@ o.fillchars = 'eob: ,fold: ,foldopen:,foldsep: ,foldclose:'
 o.foldlevel = 99
 o.foldlevelstart = 99
 opt.foldlevelstart = 99
+
+-- for obsidian
+opt.conceallevel = 2
 
 opt.spell = false
 opt.spelllang = { 'en_us', 'es_mx' }

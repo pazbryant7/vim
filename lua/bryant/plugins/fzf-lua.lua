@@ -19,8 +19,6 @@ return {
 			'refactoring',
 			'__pycache__',
 			'node_modules/',
-			'node_modules',
-			'lazy-lock.json',
 			'lazy%-lock%.json$',
 			'package%-lock%.json$',
 		}
@@ -41,10 +39,10 @@ return {
 					['ctrl-v'] = actions.file_vsplit,
 					['enter'] = actions.file_edit_or_qf,
 					['ctrl-q'] = { fn = actions.file_sel_to_qf, prefix = 'select-all' },
-					['ctrl-h'] = actions.toggle_hidden, -- Toggle showing hidden files
-					['ctrl-i'] = actions.toggle_ignore, -- Toggle ignoring file_ignore_patterns
+					['ctrl-h'] = actions.toggle_hidden,
+					['ctrl-i'] = actions.toggle_ignore,
 				},
-				grep = { -- If you want to toggle hidden/ignore for grep, add them here too
+				grep = {
 					['ctrl-h'] = actions.toggle_hidden,
 					['ctrl-i'] = actions.toggle_ignore,
 				},
@@ -78,10 +76,11 @@ return {
 	keys = {
 		{ '<leader>fz', "<cmd> FzfLua <CR>" , desc = 'FzfLua' },
 		{ '<c-p>', function() require('fzf-lua').files() end, desc = 'FzfLua Files' },
-		{ '<leader>k', function() require('fzf-lua').keymaps() end, desc = 'FzfLua Show Key Maps' },
 		{ '<leader>ht', function() require('fzf-lua').help_tags() end, desc = 'FzfLua Help Tags' },
+		{ '<leader>k', function() require('fzf-lua').keymaps() end, desc = 'FzfLua Show Key Maps' },
 		{ '<c-t>', function() require('fzf-lua').live_grep_native() end, desc = 'FzfLua Live Grep' },
 		{ 'z=', function() require('fzf-lua').spell_suggest() end, desc = 'FzfLua Spell Suggestions' },
 		{ '<leader>th', function() require('fzf-lua').colorschemes() end, desc = 'FzfLua Switch Colorschemes' },
 	},
+	-- stylua: ignore end
 }

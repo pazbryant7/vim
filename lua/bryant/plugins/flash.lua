@@ -1,17 +1,23 @@
 return {
 	'folke/flash.nvim',
-	lazy = false,
 	opts = {
 		search = {
 			multi_window = false,
 		},
 		label = {
-			style = 'overlay', ---@type "eol" | "overlay" | "right_align" | "inline"
+			current = true,
+			rainbow = {
+				enabled = false,
+				-- number between 1 and 9
+				shade = 5,
+			},
+		},
+		jump = {
+			autojump = false,
 		},
 		highlight = {
-			backdrop = true,
+			backdrop = false,
 			matches = true,
-			priority = 5000,
 			groups = {
 				match = 'FlashMatch',
 				current = 'FlashCurrent',
@@ -22,9 +28,25 @@ return {
 		modes = {
 			char = {
 				enabled = true,
+				-- only when not using jump labels
 				autohide = true,
-				jump_labels = true,
-				highlight = { backdrop = true },
+				jump_labels = false,
+				multi_line = true,
+				keys = { 'f', 'F', 't', 'T', [';'] = ':', ',' },
+				highlight = { backdrop = false },
+				jump = {
+					register = false,
+					-- when using jump labels, set to 'true' to automatically jump
+					-- or execute a motion when there is only one match
+					autojump = false,
+				},
+			},
+			treesitter = {
+				jump = { pos = 'range', autojump = true },
+				highlight = {
+					backdrop = false,
+					matches = false,
+				},
 			},
 		},
 	},
@@ -32,28 +54,12 @@ return {
 		local flash = require('flash')
 		return {
 			{
-				's',
-				mode = { 'n', 'x', 'o' },
-				function()
-					flash.jump()
-				end,
-				desc = 'Flash',
-			},
-			{
 				'gs', -- ; and , increase and decrease
 				mode = { 'n', 'x', 'o' },
 				function()
 					flash.treesitter()
 				end,
 				desc = 'Flash Treesitter',
-			},
-			{
-				'r',
-				mode = 'o',
-				function()
-					flash.remote()
-				end,
-				desc = 'Remote Flash',
 			},
 		}
 	end,

@@ -33,12 +33,17 @@ map('v', '>', '>gv', { desc = 'Align Items To The Right' })
 -- custom rename
 map('n', '<leader>cr', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Custom Rename"})
 
--- signature help
-map({ 'i', 'n' }, '<c-s>', function() v.lsp.buf.signature_help() end, { desc = 'Toggle Signature Help' })
-
 -- print current path
 map('n', '<leader>cp', "<cmd>lua vim.notify(vim.fn.expand('%:p'))<cr>", { desc = "Print Current Path" })
 
 -- quick fix list
-map('n', '<c-k>', "<cmd>cnext<cr>", { desc = "Quick fix list cnext" })
-map('n', '<c-j>', "<cmd>cprevious<cr>", { desc = "Quick fix list cprevious" })
+map('n', '<m-k>', "<cmd>cnext<cr>", { desc = "Quick fix list cnext", silent = true })
+map('n', '<m-j>', "<cmd>cprevious<cr>", { desc = "Quick fix list cprevious" })
+
+-- swap maps
+map({'n',"v"}, ';', ':', { desc = "Enter Command Mode" })
+map({'n',"v"}, ':', ';', { desc = "Repeat last f/t/F/T search" })
+
+-- already existing binds
+map('n', 'ZQ', ':q!<CR>', { desc = 'Quit without saving' })
+map('n', 'ZZ', ':wq<CR>', { desc = 'Save and quit' })

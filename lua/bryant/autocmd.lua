@@ -5,15 +5,6 @@ local augroup = vim.api.nvim_create_augroup
 
 local bryant_group = api.nvim_create_augroup('bryant_group', { clear = true })
 
-autocmd('BufEnter', {
-	desc = 'Remove Status Line Background',
-	group = bryant_group,
-	callback = function()
-		vim.cmd([[highlight StatusLine guibg=NONE ctermbg=NONE]])
-		vim.cmd([[highlight StatusLineNC guibg=NONE ctermbg=NONE]])
-	end,
-})
-
 autocmd('TextYankPost', {
 	desc = 'Highlight when yanking (copying) text',
 	group = bryant_group,
@@ -135,7 +126,10 @@ autocmd('FileType', {
 				vim.cmd('new')
 				vim.cmd('bdelete! ' .. bufnr)
 
-				vim.notify('You have closed the last window. Avoiding leave neovim.', vim.log.levels.INFO)
+				vim.notify(
+					'You have closed the last window. Avoiding leave neovim.',
+					vim.log.levels.INFO
+				)
 				-- Option 2: Show a notification instead of opening a new buffer
 				-- Uncomment the following lines and comment out Option 1 if you prefer a notification
 				-- vim.notify("This is the last special window. Closing it won't quit Neovim.", vim.log.levels.INFO)
@@ -151,7 +145,11 @@ autocmd('BufHidden', {
 	group = bryant_group,
 	desc = 'Remove unamed buffers',
 	callback = function(event)
-		if event.file == '' and vim.bo[event.buf].buftype == '' and not vim.bo[event.buf].modified then
+		if
+			event.file == ''
+			and vim.bo[event.buf].buftype == ''
+			and not vim.bo[event.buf].modified
+		then
 			vim.schedule(function()
 				pcall(vim.api.nvim_buf_delete, event.buf, {})
 			end)
@@ -202,5 +200,14 @@ autocmd({ 'FileType' }, {
 	pattern = { 'editorconfig' },
 	callback = function()
 		vim.opt_local.syntax = 'editorconfig'
+	end,
+})
+
+autocmd('BufEnter', {
+	desc = 'Register fzf-lua as a default select.ui',
+	once = true,
+	group = bryant_group,
+	callback = function()
+		require('fzf-lua').register_ui_select()
 	end,
 })
