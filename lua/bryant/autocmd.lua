@@ -1,5 +1,4 @@
 local api = vim.api
-local map = vim.keymap.set
 local autocmd = api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
@@ -146,11 +145,7 @@ autocmd('BufHidden', {
 	group = bryant_group,
 	desc = 'Remove unamed buffers',
 	callback = function(event)
-		if
-			event.file == ''
-			and vim.bo[event.buf].buftype == ''
-			and not vim.bo[event.buf].modified
-		then
+		if event.file == '' and vim.bo[event.buf].buftype == '' and not vim.bo[event.buf].modified then
 			vim.schedule(function()
 				pcall(vim.api.nvim_buf_delete, event.buf, {})
 			end)
@@ -210,5 +205,21 @@ autocmd('BufEnter', {
 	group = bryant_group,
 	callback = function()
 		require('fzf-lua').register_ui_select()
+	end,
+})
+
+autocmd('QuickFixCmdPost', {
+	desc = 'Auto-open quickfix after grep/make',
+	pattern = '[^l]*',
+	group = bryant_group,
+	callback = function()
+		vim.schedule(function()
+			local qflist = vim.fn.getqflist()
+			if #qflist > 0 then
+				if vim.fn.bufwinnr('quickfix') == -1 then
+					vim.cmd('copen')
+				end
+			end
+		end)
 	end,
 })
