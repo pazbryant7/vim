@@ -4,6 +4,7 @@ local map = v.keymap.set
 
 -- stylua: ignore start
 -- custom keymaps
+map({'n', 'i', 'v'}, '<leader>s', '<cmd>w<CR>', { desc = 'Save current buffer' })
 
 -- better change inner word
 map('n', '<C-c>', 'ciw', { desc = 'Better Change Inner Word' })
