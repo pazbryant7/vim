@@ -33,7 +33,6 @@ return {
 			default = {
 				'snippets',
 				'path',
-				'buffer',
 				'cmdline',
 			},
 		},
