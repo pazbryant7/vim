@@ -20,11 +20,21 @@ return {
 			less = { 'prettier' },
 			yaml = { 'prettier' },
 			sh = { 'shfmt' },
+			fish = { 'fish_indent' },
 			bash = { 'shfmt' },
 			zsh = { 'shfmt' },
 			go = { 'gofumpt', 'goimports' },
 			python = { 'ruff_organize_imports', 'ruff_fix', 'ruff_format' },
 			toml = { 'taplo' },
+			c = { 'clang-format' },
+			rust = { 'rustfmt' },
+			xml = { 'xmlformatter' },
+		},
+
+		formatters = {
+			fish_indent = {
+				command = '/usr/bin/fish_indent',
+			},
 		},
 	},
 	keys = {
