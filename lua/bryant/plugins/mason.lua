@@ -38,9 +38,6 @@ return {
 
 			-- c
 			'clang-format',
-
-			-- xml
-			'xmlformatter',
 		}
 		require('mason').setup({
 			ui = {
