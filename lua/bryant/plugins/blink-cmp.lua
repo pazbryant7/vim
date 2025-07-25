@@ -17,6 +17,11 @@ return {
 	opts = {
 		cmdline = {
 			enabled = true,
+			completion = {
+				menu = {
+					auto_show = true,
+				},
+			},
 		},
 		completion = {
 			documentation = { auto_show = false },
