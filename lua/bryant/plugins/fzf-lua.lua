@@ -74,7 +74,7 @@ return {
 	end,
 	-- stylua: ignore start
 	keys = {
-		{ '<leader>fz', "<cmd> FzfLua <CR>" , desc = 'FzfLua' },
+		{ '<leader>f', "<cmd> FzfLua <CR>" , desc = 'FzfLua' },
 		{ '<c-p>', function() require('fzf-lua').files() end, desc = 'FzfLua Files' },
 		{ '<leader>ht', function() require('fzf-lua').help_tags() end, desc = 'FzfLua Help Tags' },
 		{ '<leader>k', function() require('fzf-lua').keymaps() end, desc = 'FzfLua Show Key Maps' },
