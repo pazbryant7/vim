@@ -1,7 +1,6 @@
 return {
 	'chentoast/marks.nvim',
-	lazy = false,
-	cmd = 'MarksQFListAll',
+	event = 'VeryLazy',
 	opts = {
 		default_mappings = false,
 		mappings = {
@@ -14,6 +13,9 @@ return {
 			preview = 'm;',
 		},
 	},
+	config = function(_, opts)
+		require('marks').setup(opts)
+	end,
 	keys = {
 		{ 'm;', desc = 'Marks preview' },
 		{ 'm', desc = 'Start marks plugin' },
