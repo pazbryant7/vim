@@ -41,6 +41,12 @@ return {
 				'path',
 				'cmdline',
 			},
+			providers = {
+				snippets = {
+					score_offset = 5,
+					min_keyword_length = 2,
+				},
+			},
 		},
 		fuzzy = { implementation = 'prefer_rust_with_warning' },
 		snippets = { preset = 'luasnip' },
