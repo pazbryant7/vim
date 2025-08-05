@@ -22,9 +22,6 @@ map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and re-center view" })
 map("n", "n", "nzzzv", { desc = "Next search result and center" })
 map("n", "N", "Nzzzv", { desc = "Previous search result and center" })
 
--- Current file allow execution
-map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { desc = "Current file allow execution permissions", silent = true })
-
 --  No highlights
 map('n', '<Escape>', '<cmd>noh<CR>', { desc = 'No search highlights' })
 
@@ -64,7 +61,5 @@ map('n', 'ZQ', ':q!<CR>', { desc = 'Quit without saving' })
 map('n', 'ZZ', ':wq<CR>', { desc = 'Save and quit' })
 
 -- Navigate quickfix list without "no more items" errors
-map("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Localist: Next item" })
-map("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Localist: Previous item" })
-map('n', '<c-k>', '<cmd>silent! cnext<CR>zz', { desc = 'Quickfix: Next item', })
-map('n', '<c-j>', '<cmd>silent! cprevious<CR>zz', { desc = 'Quickfix: Previous item', })
+map('n', '<m-k>', '<cmd>silent! cnext<CR>zz', { desc = 'Quickfix: Next item' })
+map('n', '<m-j>', '<cmd>silent! cprevious<CR>zz', { desc = 'Quickfix: Previous item' })

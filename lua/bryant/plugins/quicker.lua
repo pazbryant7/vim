@@ -81,6 +81,6 @@ return {
 	},
   -- stylua: ignore start
 	keys = {
-    { '<c-q>', function() require('quicker').toggle() end, desc = 'Toggle quickfix', },
+    { '<m-q>', function() require('quicker').toggle() end, desc = 'Toggle quickfix', },
 	},
 }
