@@ -8,9 +8,7 @@ return {
 			'L3MON4D3/LuaSnip',
 			version = 'v2.*',
 			config = function()
-				require('luasnip.loaders.from_lua').lazy_load({
-					paths = { './snippets' },
-				})
+				require('luasnip.loaders.from_lua').lazy_load({ paths = { './snippets' } })
 			end,
 		},
 	},
@@ -37,14 +35,14 @@ return {
 		sources = {
 			default = {
 				'snippets',
-				'buffer',
 				'path',
+				'buffer',
 				'cmdline',
 			},
 			providers = {
 				snippets = {
-					score_offset = 5,
-					min_keyword_length = 2,
+					score_offset = 100,
+					min_keyword_length = 1,
 				},
 			},
 		},
@@ -55,7 +53,7 @@ return {
 		keymap = {
 			preset = 'none',
 			['<c-space>'] = { 'hide' },
-			['<c-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
+			['<c-z>'] = { 'show_signature', 'hide_signature', 'fallback' },
 			['<c-y>'] = { 'select_and_accept', 'fallback' },
 			['<Up>'] = { 'select_prev', 'fallback' },
 			['<Down>'] = { 'select_next', 'fallback' },
