@@ -23,6 +23,7 @@ return {
 		},
 		completion = {
 			documentation = { auto_show = false },
+			accept = { auto_brackets = { enabled = false } },
 			menu = {
 				draw = {
 					columns = {
