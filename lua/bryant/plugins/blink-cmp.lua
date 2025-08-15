@@ -25,6 +25,7 @@ return {
 			documentation = { auto_show = false },
 			accept = { auto_brackets = { enabled = true } },
 			menu = {
+				auto_show = true,
 				draw = {
 					columns = {
 						{ 'label', 'label_description', gap = 1 },
