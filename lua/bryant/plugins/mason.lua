@@ -48,4 +48,7 @@ return {
 			ensure_installed = ensure_installed,
 		})
 	end,
+	keys = {
+		{ '<leader>M', '<cmd>Mason<cr>', desc = 'Open Mason' },
+	},
 }
