@@ -8,7 +8,7 @@ return {
 			flavour = 'frappe', -- latte, frappe, macchiato, mocha
 			background = { -- :h background
 				light = 'latte',
-				dark = 'mocha',
+				dark = 'frappe',
 			},
 			no_italic = true, -- Force no italic
 			no_bold = false, -- Force no bold
@@ -31,7 +31,7 @@ return {
 		},
 		config = function(_, opts)
 			require('catppuccin').setup(opts)
-			vim.cmd('colorscheme catppuccin-frappe')
+			vim.cmd('colorscheme catppuccin')
 		end,
 	},
 
