@@ -83,6 +83,13 @@ return {
 			desc = 'FzfLua Files',
 		},
 		{
+			'<m-c>',
+			function()
+				require('fzf-lua').files({ cwd = vim.fn.expand('%:p:h') })
+			end,
+			desc = "FzfLua Files from Current File's Directory",
+		},
+		{
 			'<leader>ht',
 			function()
 				require('fzf-lua').help_tags()
