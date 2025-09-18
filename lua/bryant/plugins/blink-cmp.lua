@@ -9,12 +9,6 @@ return {
 			version = 'v2.*',
 			build = 'make install_jsregexp',
 			config = function()
-				local ls = require('luasnip')
-				ls.filetype_extend('javascript', { 'js' })
-				ls.filetype_extend('typescript', { 'js' })
-				ls.filetype_extend('javascriptreact', { 'js' })
-				ls.filetype_extend('typescriptreact', { 'js' })
-
 				require('luasnip.loaders.from_lua').lazy_load({ paths = { vim.fn.stdpath('config') .. '/snippets' } })
 			end,
 		},
@@ -25,7 +19,7 @@ return {
 			completion = {
 				list = {
 					selection = {
-						preselect = false,
+						preselect = true,
 						auto_insert = true,
 					},
 				},
@@ -34,23 +28,24 @@ return {
 				},
 			},
 		},
-
 		appearance = {
 			-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 			nerd_font_variant = 'mono',
 		},
-
 		completion = {
+			accept = {
+				auto_brackets = {
+					enabled = true,
+				},
+			},
 			list = {
 				selection = {
 					preselect = true,
 					auto_insert = true,
 				},
 			},
-			documentation = { auto_show = true },
-			accept = { auto_brackets = { enabled = true } },
 			menu = {
-				max_height = 15,
+				max_height = 10,
 				auto_show = true,
 				draw = {
 					columns = {
@@ -70,25 +65,34 @@ return {
 		},
 		sources = {
 			default = {
+				'buffer',
 				'snippets',
 				'path',
-				'buffer',
 				'cmdline',
 			},
 			providers = {
 				snippets = {
 					score_offset = 100,
 					min_keyword_length = 2,
+					should_show_items = function(ctx)
+						return ctx.trigger.initial_kind ~= 'trigger_character'
+					end,
 				},
 			},
 		},
-		fuzzy = { implementation = 'prefer_rust_with_warning' },
-		snippets = { preset = 'luasnip' },
-
+		fuzzy = {
+			implementation = 'prefer_rust_with_warning',
+		},
+		snippets = {
+			preset = 'luasnip',
+		},
+		signature = {
+			enabled = false,
+		},
 		keymap = {
 			preset = 'none',
 			['<c-space>'] = { 'hide' },
-			['<c-z>'] = { 'show_signature', 'hide_signature', 'fallback' },
+			['<c-x>'] = { 'show_signature', 'hide_signature', 'fallback' },
 			['<c-y>'] = { 'select_and_accept', 'fallback' },
 			['<Up>'] = { 'select_prev', 'fallback' },
 			['<Down>'] = { 'select_next', 'fallback' },
@@ -107,4 +111,33 @@ return {
 		},
 	},
 	opts_extend = { 'sources.default' },
+	config = function(_, opts)
+		local blink = require('blink.cmp')
+		blink.setup(opts)
+
+		local autoCompletionEnabled = true
+
+		local function EnableAutoCompletion()
+			vim.b.completion = true
+			autoCompletionEnabled = true
+			print('Auto-completion enabled')
+		end
+
+		local function DisableAutoCompletion()
+			vim.b.completion = false
+			blink.hide()
+			autoCompletionEnabled = false
+			print('Auto-completion disabled')
+		end
+
+		local function ToggleAutoCompletion()
+			if autoCompletionEnabled then
+				DisableAutoCompletion()
+			else
+				EnableAutoCompletion()
+			end
+		end
+
+		vim.keymap.set('n', '\\\\', ToggleAutoCompletion, { desc = 'Toggle Blink Cmp Completion' })
+	end,
 }

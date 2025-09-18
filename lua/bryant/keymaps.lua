@@ -2,15 +2,10 @@ local v = vim
 
 local map = v.keymap.set
 
--- Manage exit and saves
-map('n', '<leader>wa', '<cmd>wa<CR>', { desc = 'Save all buffers' })
-map('n', '<leader>qc', '<cmd>q!<CR>', { desc = 'Quit without save' })
-map('n', '<leader>qa', '<cmd>qa!<CR>', { desc = 'Quit all without save' })
-
 -- last buffer
 map('i', '<C-^>', '<Cmd>b#<CR>', { desc = 'Toggle between current and last buffer' })
 
--- better change inner word
+-- Change inner word
 map('n', '<C-c>', 'ciw', { desc = 'Change Inner Word' })
 
 -- In Visual mode, moves the selected lines down and up by one line, then re-indents.
@@ -39,16 +34,14 @@ map('n', '<Escape>', '<cmd>noh<CR>', { desc = 'No search highlights' })
 map({ 'n', 'v', 'o' }, 'H', '^', { desc = 'Go To The Start Of The Line' })
 map({ 'n', 'v', 'o' }, 'L', 'g_', { desc = 'Go To The End Of The Line' })
 
--- paste without overwrite register
+-- without overwrite register
 map('x', '<leader>P', [["_dP]], { desc = 'Paste Without Overwrite Register ' })
 
 -- copy without overwrite register
-map({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Copy Without Overwrite Register' })
-map('n', '<leader>Y', [["+Y]], { desc = 'Copy Full Line Without Overwrite Register' })
+map({ 'n', 'v' }, '<leader>Y', [["+y]], { desc = 'Copy Without Overwrite Register' })
 
 -- delete without overwrite register
-map({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'Delete Without Overwrite Register' })
-map('n', '<leader>D', '"_dd', { desc = 'Delete Full Line Without Overwrite Register' })
+map({ 'n', 'v' }, '<leader>D', '"_d', { desc = 'Delete Without Overwrite Register' })
 
 -- align manually
 map('v', '<', '<gv', { desc = 'Align Items To The Left' })
@@ -62,21 +55,17 @@ map('n', '<leader>cp', function()
 	vim.notify(vim.fn.expand('%:p'), vim.log.levels.INFO, { title = 'Neovim Alert' })
 end, { desc = 'Print Current Path' })
 
--- already existing binds
+-- exit
 map('n', 'ZQ', ':q!<CR>', { desc = 'Quit without saving' })
 map('n', 'ZZ', ':wq<CR>', { desc = 'Save and quit' })
 
--- Navigate quickfix list without "no more items" errors
+-- navigate quickfix list without "no more items" errors
 map('n', '<c-k>', '<cmd>silent! cnext<CR>zz', { desc = 'Quickfix: Next item' })
 map('n', '<c-j>', '<cmd>silent! cprevious<CR>zz', { desc = 'Quickfix: Previous item' })
-
--- disable suspend neovim
-map('n', '<c-z>', '<Nop>', { desc = 'Disable suspend neovim' })
 
 -- usercmd keybinds
 map('n', '<leader>ts', '<cmd>ToggleSpell<cr>', { desc = 'Toggle Spell}' })
 map('n', '<leader>td', '<cmd>ToggleDiagnostics<cr>', { desc = 'Toggle Diagtostics' })
-map('n', '<leader>tc', '<cmd>ToggleAutoCompletion<cr>', { desc = 'Toggle BlinkCompletion' })
 
 -- tmux open under cursor in new tmux pane
 map(
@@ -86,8 +75,9 @@ map(
 	{ noremap = true, silent = true, desc = 'Open file under cursor in new tmux pane' }
 )
 
--- DeleteOtherBuffers but current
-map('n', '<leader>bo', '<cmd>DeleteOtherBuffers<cr>', { desc = 'Delete all buffers except current', silent = true })
-
 -- lazy
 map('n', '<leader>L', '<cmd>Lazy<cr>', { desc = 'Open Lazy' })
+
+-- functions can be found in my usercmd.lua file
+map('n', '<leader>xl', '<Cmd>LuafileExecute<CR>', { desc = 'Execute lua file' })
+map('n', '<leader>bo', '<cmd>DeleteOtherBuffers<cr>', { desc = 'Delete all buffers except current', silent = true })
