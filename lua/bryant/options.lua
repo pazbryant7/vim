@@ -38,7 +38,7 @@ opt.scrolloff = 5
 opt.isfname:append('@-@')
 
 -- update statusline
-opt.laststatus = 3
+opt.laststatus = 0
 
 opt.updatetime = 50
 
