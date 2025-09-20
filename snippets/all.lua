@@ -2,9 +2,9 @@
 
 return {
 	-- TODO
-	s('TODO', {
+	s('todo', {
 		i(1, 'FIX|HACK|WARN|PERF|NOTE|TEST'),
-		t(':'),
+		t(': '),
 		i(2, ' Description'),
 	}),
 
