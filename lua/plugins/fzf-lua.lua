@@ -72,7 +72,42 @@ return {
     { '<leader>k', function() require('fzf-lua').keymaps() end, desc = 'FzfLua Show Key Maps' },
     { '<c-t>', function() require('fzf-lua').live_grep_native() end, desc = 'FzfLua Live Grep' },
     { 'z=', function() require('fzf-lua').spell_suggest() end, desc = 'FzfLua Spell Suggestions' },
-    { '<leader>th', function() require('fzf-lua').colorschemes() end, desc = 'FzfLua Switch Colorschemes' },
     { '<m-c>', function() require('fzf-lua').files({ cwd = vim.fn.expand('%:p:h') }) end, desc = "FzfLua Files from Current File's Directory", },
+		-- stylua: ignore end
+		{
+			'<leader>th',
+			function()
+				require('fzf-lua').colorschemes({
+					ignore_patterns = {
+						'^ron$',
+						'^vim$',
+						'^blue$',
+						'^shine$',
+						'^slate$',
+						'^torte$',
+						'^quiet$',
+						'^pablo$',
+						'^delek$',
+						'^desert$',
+						'^murphy$',
+						'^sorbet$',
+						'^zellner$',
+						'^default$',
+						'^elflord$',
+						'^koehler$',
+						'^morning$',
+						'^evening$',
+						'^darkblue$',
+						'^industry$',
+						'^retrobox$',
+						'^zaibatsu$',
+						'^peachpuff$',
+						'^wildcharm$',
+						'^lunaperche$',
+					},
+				})
+			end,
+			desc = 'FzfLua Switch Colorschemes',
+		},
 	},
 }
