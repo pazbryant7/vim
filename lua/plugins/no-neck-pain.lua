@@ -5,6 +5,7 @@ return {
 	event = 'BufEnter',
 	opts = {
 		width = 80,
+		disableOnLastBuffer = true,
 		autocmds = {
 			enableOnVimEnter = true,
 			enableOnTabEnter = false,
@@ -29,6 +30,7 @@ return {
 				wrap = true,
 				linebreak = true,
 				signcolumn = 'no', -- Set signcolumn to 'no'
+				fillchars = 'eob: ',
 			},
 		},
 	},
