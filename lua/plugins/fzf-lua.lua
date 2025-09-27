@@ -92,7 +92,6 @@ return {
 						'^murphy$',
 						'^sorbet$',
 						'^zellner$',
-						'^default$',
 						'^elflord$',
 						'^koehler$',
 						'^morning$',
