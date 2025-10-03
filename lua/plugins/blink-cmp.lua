@@ -92,7 +92,6 @@ return {
 		keymap = {
 			preset = 'none',
 			['<c-space>'] = { 'hide' },
-			['<c-x>'] = { 'show_signature', 'hide_signature', 'fallback' },
 			['<c-y>'] = { 'select_and_accept', 'fallback' },
 			['<Up>'] = { 'select_prev', 'fallback' },
 			['<Down>'] = { 'select_next', 'fallback' },
