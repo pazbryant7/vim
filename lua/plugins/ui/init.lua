@@ -42,7 +42,7 @@ return {
 
 	{
 		'NvChad/nvim-colorizer.lua',
-		enabled = false,
+		enabled = true,
 		event = 'BufReadPre',
 		opts = {
 			filetypes = {
