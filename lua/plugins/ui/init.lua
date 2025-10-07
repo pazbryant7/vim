@@ -41,6 +41,14 @@ return {
 	},
 
 	{
+		'bluz71/vim-moonfly-colors',
+		name = 'moonfly',
+		init = function()
+			vim.g.moonflyItalics = false
+		end,
+	},
+
+	{
 		'NvChad/nvim-colorizer.lua',
 		enabled = true,
 		event = 'BufReadPre',
