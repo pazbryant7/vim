@@ -33,6 +33,22 @@ return {
 				fillchars = 'eob: ',
 			},
 		},
+
+		integrations = {
+			neotest = {
+				position = 'right',
+				reopen = true,
+			},
+			NvimDAPUI = {
+				---@type "none"
+				position = 'none',
+				reopen = true,
+			},
+			dashboard = {
+				enabled = true,
+				filetypes = { 'leetcode.nvim', 'aerial' },
+			},
+		},
 	},
 	keys = {
 		{
