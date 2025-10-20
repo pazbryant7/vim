@@ -15,10 +15,6 @@ return {
 				},
 			},
 		},
-		config = function(_, opts)
-			require('catppuccin').setup(opts)
-			vim.cmd('colorscheme catppuccin-frappe')
-		end,
 	},
 
 	{
@@ -34,18 +30,59 @@ return {
 				string = { italic = false },
 			},
 		},
-		config = function(_, opts)
-			require('NeoSolarized').setup(opts)
-			vim.cmd([[ colorscheme NeoSolarized ]])
-		end,
 	},
 
 	{
 		'bluz71/vim-moonfly-colors',
+		lazy = false,
 		name = 'moonfly',
 		init = function()
 			vim.g.moonflyItalics = false
 		end,
+	},
+
+	{
+		'miikanissi/modus-themes.nvim',
+		opts = {
+			styles = {
+				comments = { italic = false },
+				keywords = { italic = false },
+				functions = {},
+				variables = {},
+			},
+		},
+	},
+
+	{
+
+		'slugbyte/lackluster.nvim',
+		opts = {
+			tweak_highlight = {
+				['@keyword'] = {
+					overwrite = false, -- overwrite falsey will extend/update lackluster's defaults (nil also does this)
+					bold = false,
+					italic = false,
+				},
+			},
+		},
+	},
+
+	{
+		'scottmckendry/cyberdream.nvim',
+		opts = {
+			italic_comments = false,
+		},
+	},
+
+	{ 'Mofiqul/dracula.nvim', opts = { italic_comment = false } },
+
+	{
+
+		'Mofiqul/vscode.nvim',
+		opts = {
+			italic_comments = false,
+			italic_inlayhints = false,
+		},
 	},
 
 	{
