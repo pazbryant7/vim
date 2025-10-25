@@ -105,6 +105,8 @@ return {
 						'^peachpuff$',
 						'^wildcharm$',
 						'^lunaperche$',
+						'^modus%_operandi$',
+						'^catppuccin%-latte$',
 					},
 				})
 			end,
